@@ -265,7 +265,7 @@ export const Dairy = () => {
                           <span></span>
                         ) : (
                           <div className="sp-product-item">
-                            <Link to={`/product/${product.title}`}>
+                            <Link to={`/product/${product._id}`}>
                               {" "}
                               <ImageSlider images={product.image} />
                             </Link>
@@ -278,7 +278,7 @@ export const Dairy = () => {
                                 <i className="fas fa-star"></i>
                               </div>
                               <h6 className="title">
-                                <Link to={`/product/${product.title}`}>
+                                <Link to={`/product/${product._id}`}>
                                   {product.title}
                                 </Link>
                               </h6>
