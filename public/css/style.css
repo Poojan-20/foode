@@ -3429,7 +3429,7 @@ a {
 }
 
 .shop-discount-area {
-    /* background-image: url('./img/shop_discount_bg.jpg'); */
+    background-image: url('../img/shop_discount_bg.jpg');
     background-position: center;
     background-size: cover;
     padding: 45px 100px 40px;

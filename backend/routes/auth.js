@@ -255,4 +255,17 @@ router.post("/countinstock/:id", async (req, res) => {
   );
   res.json({ countstock });
 });
+
+//ROUTE 3: get Loggedin user details using: POST "/api/auth/getuser". login required
+
+router.post('/getuser', fetchUser, async (req, res) => {
+  try {
+    userId = req.user.id;
+    const user = await User.findById(userId).select("-password")
+    res.send(user);
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send("Internal Server Error");
+  }
+})
 module.exports = router;

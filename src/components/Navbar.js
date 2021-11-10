@@ -1,12 +1,14 @@
-import React, { useState, useEffect,useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Axios from "axios";
 import { Link } from "react-router-dom";
 import { useHistory, useLocation } from "react-router";
-import CartContext from "./context/CartContext"
-import SweetAlertContext from "./context/SweetAlertContext"
+import CartContext from "./context/CartContext";
+import SweetAlertContext from "./context/SweetAlertContext";
+import profileContext from "./context/profilecontext";
 export const Navbar = (props) => {
-  const { carts} = useContext(CartContext);
-  const { aos} = useContext(SweetAlertContext);
+  const { carts } = useContext(CartContext);
+  const { aos } = useContext(SweetAlertContext);
+  const { credentials, getAccountDetails } = useContext(profileContext);
   let history = useHistory();
   let location = useLocation();
 
@@ -29,6 +31,10 @@ export const Navbar = (props) => {
     getProducts(variables);
     aos();
   }, []);
+  
+  useEffect(() => {
+    getAccountDetails()
+}, [])
 
   const url = "http://localhost:5000/api/product/getProducts";
   const getProducts = (variables) => {
@@ -132,17 +138,23 @@ export const Navbar = (props) => {
                                 <i className="far fa-user"></i>
                               </Link>
                             </li>
-                            <li className="header-user">
-                              <Link to="/product/upload">
-                                <i class="fas fa-upload"></i>
-                              </Link>
-                            </li>
+                            {credentials.email === "admin@gmail.com" ? (
+                              <li className="header-user">
+                                <Link to="/product/upload">
+                                  <i class="fas fa-upload"></i>
+                                </Link>
+                              </li>
+                            ) : (
+                              <span></span>
+                            )}
                             <li className="header-cart-action">
                               <div className="header-cart-wrap">
                                 <Link to="/cartpage">
                                   <i className="fas fa-shopping-basket"></i>
                                 </Link>
-                                <span className="item-count">{carts.length}</span>
+                                <span className="item-count">
+                                  {carts.length}
+                                </span>
                               </div>
                             </li>
                             <li className="header-cart-action">
@@ -208,7 +220,7 @@ export const Navbar = (props) => {
                           </li>
                           <li>
                             <Link to="/dairy">
-                            <i class="fas fa-cheese"></i> Dairy Products
+                              <i class="fas fa-cheese"></i> Dairy Products
                             </Link>
                           </li>
                         </ul>

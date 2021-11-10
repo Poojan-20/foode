@@ -7,7 +7,7 @@ import { Navbar } from "./Navbar";
 import Spinner from "./Spinner";
 import SweetAlertContext from "./context/SweetAlertContext";
 
-export const Fruits = () => {
+export const Fruits = (props) => {
   const [Products, setProducts] = useState([]);
   const [PostSize, setPostSize] = useState(0);
   const [Deli, setDeli] = useState({
@@ -42,6 +42,7 @@ export const Fruits = () => {
         alert("failed to fetch product data");
       }
     });
+    console.log(Products)
   };
 
   const showDeliResults = (deli) => {

@@ -149,6 +149,10 @@ export const CartPage = (props) => {
             <div className="col-xl-7">
               <div className="cart-wrapper">
                 <div className="table-responsive">
+                {carts.length === 0 ?
+                                            <div>
+                                                <h4>Your Cart is Empty</h4>
+                                            </div> :
                   <table className="table mb-0">
                     <thead>
                       <tr>
@@ -216,7 +220,7 @@ export const CartPage = (props) => {
                       );
                     })}
                   </table>
-                </div>
+}</div>
               </div>
               <div className="shop-cart-bottom">
                 <div className="cart-coupon">

@@ -272,7 +272,7 @@ export const LandingProfile = (props) => {
                       updateProfile={updateProfile}
                       profile={profile}
                     />
-                  );
+                  )
                 })}
               </div>
               <div className="form-group d-md-flex justify-content-start mt-3">
@@ -288,5 +288,5 @@ export const LandingProfile = (props) => {
         )}
       </div>
     </>
-  );
-};
+  )
+}

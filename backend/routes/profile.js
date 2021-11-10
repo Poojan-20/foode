@@ -30,7 +30,7 @@ router.post('/addaddress', fetchUser, [
 ], async (req, res) => {
 
     try {
-        const { firstname , lastname,address,city,state,pincode,country,phone } = req.body
+        const {firstname,lastname,address,city,state,pincode,country,phone} = req.body
 
         //If there are errors, return Bad request and the errors 
         const errors = validationResult(req);

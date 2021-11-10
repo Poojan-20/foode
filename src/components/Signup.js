@@ -25,7 +25,7 @@ export const Signup = (props) => {
         if (json.success) {
             //Save the Auth Token & Redirect
             localStorage.setItem('token', json.authToken);
-            history.push('/login');
+            history.push('/');
             Register();
         }
         else {

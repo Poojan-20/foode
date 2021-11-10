@@ -4,6 +4,7 @@ const ProfileState = (props) => {
     const host = "http://localhost:5000"
     const profileinitial = []
     const [profiles, setProfiles] = useState(profileinitial)
+    const [credentials, setCredentials] = useState([]);
 
     const getProfiles = async () => {
         //api calls
@@ -84,10 +85,23 @@ const ProfileState = (props) => {
         });
         setProfiles(newprofiles);
     };
-
+    
+    const getAccountDetails = async () => {
+        const url = "http://localhost:5000/api/auth/getuser";
+        const response = await fetch(url, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'auth-token': localStorage.getItem('token')
+          },
+        });
+        const json = await response.json()
+        console.log(json)
+        setCredentials(json);
+      }
    
     return (    
-        <profileContext.Provider value={{ profiles, addProfile,getProfiles,editProfile,deleteprofile} }>
+        <profileContext.Provider value={{ getAccountDetails,profiles, addProfile,getProfiles,editProfile,deleteprofile,credentials} }>
             {props.children};
         </profileContext.Provider>
     )
