@@ -11,6 +11,7 @@
 /build
 backend/__pycache__/
 backend/env/
+/uploads
 # misc
 node_modules
 .env
